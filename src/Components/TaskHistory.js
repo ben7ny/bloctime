@@ -7,9 +7,7 @@ class TaskHistory extends Component {
 
     this.state = {
       tasks: [],
-      NewTaskDescription: "",
-      sendAt: "",
-      taskID: 0,
+      NewTaskDescription: ""
     };
 
     this.tasksRef = this.props.firebase.database().ref('tasks');
@@ -18,10 +16,9 @@ class TaskHistory extends Component {
   componentDidMount(){
     this.tasksRef.on('child_added', snapshot => {
       const task = snapshot.val();
-      const newId = this.state.taskID++;
       task.key = snapshot.key;
-      const tasks = this.state.tasks.concat( task ).sort((a, b) => a.taskID < b.taskID)
-      this.setState({ tasks: tasks, taskID: newId })
+      const tasks = this.state.tasks.concat( task ).reverse();
+      this.setState({ tasks: tasks })
     });
 
 
@@ -38,12 +35,8 @@ class TaskHistory extends Component {
   createTask(e){
     e.preventDefault();
     const newTask = this.state.NewTaskDescription;
-    const newId = this.state.taskID++;
-    console.log(newTask);
     this.tasksRef.push({
-      name: newTask,
-      sendAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-      taskID: newId
+      name: newTask
     });
 
   }
@@ -52,13 +45,11 @@ class TaskHistory extends Component {
 
 
  getNewTaskUpdate(e) {
-  this.setState({ NewTaskDescription: e.target.value });
+  const tasks = this.state.tasks.reverse()
+  this.setState({ NewTaskDescription: e.target.value }, tasks: tasks  );
  }
 
- getNewTaskPriorityUpdate(e) {
-   console.log('e', e)
-   this.setState({ newTaskPriority: parseInt(e.target.value) })
- }
+
 
 
 
