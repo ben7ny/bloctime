@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import TaskHistory from './Components/TaskHistory.js'
+import TaskButton from './Components/TaskButton.js'
 import './App.css';
 
 var config = {
@@ -21,6 +22,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Bloc Time</h1>
+          <TaskButton firebase={firebase}/>
         </header>
         <h1 className="App-intro">
           Task History
