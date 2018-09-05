@@ -17,7 +17,7 @@ class TaskHistory extends Component {
     this.tasksRef.on('child_added', snapshot => {
       const task = snapshot.val();
       task.key = snapshot.key;
-      const tasks = this.state.tasks.concat( task ).reverse();
+      const tasks = this.state.tasks.concat( task );
       this.setState({ tasks: tasks })
     });
 
@@ -45,8 +45,7 @@ class TaskHistory extends Component {
 
 
  getNewTaskUpdate(e) {
-  const tasks = this.state.tasks.reverse()
-  this.setState({ NewTaskDescription: e.target.value }, tasks: tasks  );
+  this.setState({ NewTaskDescription: e.target.value});
  }
 
 
@@ -54,12 +53,14 @@ class TaskHistory extends Component {
 
 
   render() {
+
     return(
       <div className="myTaskList"> {this.state.tasks.map((task, index) =>
+
         <ul key={index}>
           <li>{task.name}</li>
         </ul>
-      )}
+      ).reverse()}
 
       <div>
         <form className="NewTaskCreated" onSubmit={ (e) =>this.createTask(e)}>
