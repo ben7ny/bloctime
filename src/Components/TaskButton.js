@@ -8,25 +8,44 @@ class TaskButton extends Component {
       taskNumber:0,
       timerStarted: false,
       timerStoped: true,
-      timeBreak: 5,
+      timeBreak: 0,
       minutes: 25,
-      seconds: 60
+      seconds: 0
     };
   }
 
 
   handleTimeStart(e){
     e.preventDefault();
-    if(this.state.timerStoped){
-      setInterval(() => {
-        this.setState({timerStarted: true, timerStoped:false })
-        if(this.state.timerStarted){
-          this.setState((prevState) => ({ seconds: prevState.seconds - 1 }));
+    if(!this.state.timerStarted){
+      this.setState({timerStarted: true})
+      this.timer = setInterval(() => {
+        if(this.state.seconds === 0){
+          if(this.state.minutes > 0){
+            this.setState({minutes: this.state.minutes -1, seconds: 59});
+          }else{
+            this.setState({timerStarted: false})
+            clearInterval(this.timer);
+            this.setState({minutes:25, seconds: 0});
+            console.log("sond goes here");
+          }
         }
+        else{
+          this.setState({seconds: this.state.seconds - 1});
+        }
+
 
       }, 1000);
 
     }
+
+  }
+
+
+  handleTimeRest(e){
+    e.preventDefault();
+    this.setState({minutes:25, seconds: 0, timerStarted: false})
+    clearInterval(this.timer);
 
   }
 
@@ -38,7 +57,7 @@ class TaskButton extends Component {
       <div>
         <h2>{this.state.minutes + ":" + this.state.seconds}</h2>
         <button onClick={this.handleTimeStart.bind(this)}>Start</button>
-        <button>Reset</button>
+        <button onClick={this.handleTimeRest.bind(this)}>Reset</button>
         <button>Break</button>
       </div>
     );
