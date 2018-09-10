@@ -8,7 +8,7 @@ class TaskButton extends Component {
       taskNumber:0,
       timerStarted: false,
       timerStoped: true,
-      timeBreak: 0,
+      timeBreak: 5,
       minutes: 25,
       seconds: 0
     };
@@ -50,12 +50,18 @@ class TaskButton extends Component {
   }
 
 
+  
+
+
 
 
   render() {
     return(
       <div>
-        <h2>{this.state.minutes + ":" + this.state.seconds}</h2>
+        <h2> {(this.state.minutes <= 9  && this.state.seconds <= 9) ? ("0" + this.state.minutes + ":" +  "0" + this.state.seconds) : (
+          (this.state.minutes >= 0 && this.state.minutes <= 9 && this.state.seconds >= 10)? ("0" + this.state.minutes + ":" + this.state.seconds):
+          (this.state.minutes + ":" + "0" + this.state.seconds)
+        ) }</h2>
         <button onClick={this.handleTimeStart.bind(this)}>Start</button>
         <button onClick={this.handleTimeRest.bind(this)}>Reset</button>
         <button>Break</button>
