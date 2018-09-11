@@ -42,7 +42,7 @@ class TaskButton extends Component {
 
   handleTimeRest(e){
     e.preventDefault();
-    this.setState({minutes:2, seconds: 0, timerStarted: false})
+    this.setState({minutes:25, seconds: 0, timerStarted: false})
     clearInterval(this.timer);
 
   }
