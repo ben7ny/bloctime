@@ -17,3 +17,8 @@
 .App-intro {
   font-size: large;
 }
+
+
+.hidden {
+  display: none;
+}

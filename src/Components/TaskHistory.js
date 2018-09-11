@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import TaskButton from './TaskButton.js'
 
 class TaskHistory extends Component {
   constructor(props){
@@ -53,6 +53,7 @@ class TaskHistory extends Component {
 
 
   render() {
+<<<<<<< HEAD
 
     return(
       <div className="myTaskList"> {this.state.tasks.map((task, index) =>
@@ -61,19 +62,38 @@ class TaskHistory extends Component {
           <li>{task.name}</li>
         </ul>
       ).reverse()}
+=======
+>>>>>>> bloctime-button
 
+    return(
       <div>
-        <form className="NewTaskCreated" onSubmit={ (e) =>this.createTask(e)}>
-          <label> Enter New Task:
-          <input type="text" placeholder="Type Your Task" value={this.state.NewTaskDescription} onChange={ (e) => this.getNewTaskUpdate(e) }/>
-          </label>
+        <header className="App-header">
+          <h1 className="App-title">Bloc Time</h1>
+          <TaskButton tasks={this.state.tasks} />
+        </header>
+        <h1 className="App-intro">
+          Task History
+        </h1>
+        <div className="myTaskList"> {this.state.tasks.map((task, index) =>
+
+          <ul key={index}>
+            <li>{task.name}</li>
+          </ul>
+        ).reverse()}
+
+        <div>
+          <form className="NewTaskCreated" onSubmit={ (e) =>this.createTask(e)}>
+            <label> Enter New Task:
+            <input type="text" placeholder="Type Your Task" value={this.state.NewTaskDescription} onChange={ (e) => this.getNewTaskUpdate(e) }/>
+            </label>
 
 
-          <input type="submit" value="Create Task" />
+            <input type="submit" value="Create Task" />
 
-        </form>
-       </div>
+          </form>
+         </div>
 
+        </div>
       </div>
     );
   }
