@@ -50,27 +50,54 @@ class TaskButton extends Component {
 
   handleBreak(e){
     e.preventDefault();
-    if(!this.state.timerStarted){
-      this.setState({minutes:5, seconds: 0, timerStarted: true})
-      this.timer = setInterval(() => {
-        if(this.state.seconds === 0){
-          if(this.state.minutes > 0){
-            this.setState({minutes: this.state.minutes -1, seconds: 59});
-          }else{
-            this.setState({timerStarted: false})
-            clearInterval(this.timer);
-            this.setState({minutes:25, seconds: 0, breakVisibility: false});
-            console.log("sond goes here");
+    const taskNum = this.props.tasks.length;
+    console.log(taskNum);
+    if(taskNum % 4 === 0){
+      if(!this.state.timerStarted){
+        this.setState({minutes:30, seconds: 0, timerStarted: true})
+        this.timer = setInterval(() => {
+          if(this.state.seconds === 0){
+            if(this.state.minutes > 0){
+              this.setState({minutes: this.state.minutes -1, seconds: 59});
+            }else{
+              this.setState({timerStarted: false})
+              clearInterval(this.timer);
+              this.setState({minutes:25, seconds: 0, breakVisibility: false});
+              console.log("sond goes here");
+            }
           }
-        }
-        else{
-          this.setState({seconds: this.state.seconds - 1});
-        }
+          else{
+            this.setState({seconds: this.state.seconds - 1});
+          }
 
 
-      }, 1000);
+        }, 1000);
 
+      }
+    }else {
+      if(!this.state.timerStarted){
+        this.setState({minutes:5, seconds: 0, timerStarted: true})
+        this.timer = setInterval(() => {
+          if(this.state.seconds === 0){
+            if(this.state.minutes > 0){
+              this.setState({minutes: this.state.minutes -1, seconds: 59});
+            }else{
+              this.setState({timerStarted: false})
+              clearInterval(this.timer);
+              this.setState({minutes:25, seconds: 0, breakVisibility: false});
+              console.log("sond goes here");
+            }
+          }
+          else{
+            this.setState({seconds: this.state.seconds - 1});
+          }
+
+
+        }, 1000);
+
+      }
     }
+
 
   }
 

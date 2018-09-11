@@ -20,13 +20,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Bloc Time</h1>
-          <TaskButton firebase={firebase}/>
-        </header>
-        <h1 className="App-intro">
-          Task History
-        </h1>
         <TaskHistory firebase={firebase}/>
       </div>
     );
