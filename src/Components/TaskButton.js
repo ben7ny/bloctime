@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {TimeDisplay} from './TimeDisplay'
+import dingSfx from './ding-sound-effect.mp3'
+
+
 class TaskButton extends Component {
   constructor(props){
     super(props);
@@ -10,6 +13,9 @@ class TaskButton extends Component {
       minutes: 25,
       seconds: 0
     };
+
+    this.audioElement = document.createElement('audio');
+    this.audioElement.src = dingSfx;
   }
 
 
@@ -24,8 +30,10 @@ class TaskButton extends Component {
           }else{
             this.setState({timerStarted: false})
             clearInterval(this.timer);
+            this.audioElement.play();
             this.setState({minutes:25, seconds: 0, breakVisibility: true});
-            console.log("sond goes here");
+
+
           }
         }
         else{
@@ -62,8 +70,8 @@ class TaskButton extends Component {
             }else{
               this.setState({timerStarted: false})
               clearInterval(this.timer);
+              this.audioElement.play();
               this.setState({minutes:25, seconds: 0, breakVisibility: false});
-              console.log("sond goes here");
             }
           }
           else{
@@ -84,8 +92,8 @@ class TaskButton extends Component {
             }else{
               this.setState({timerStarted: false})
               clearInterval(this.timer);
+              this.audioElement.play();
               this.setState({minutes:25, seconds: 0, breakVisibility: false});
-              console.log("sond goes here");
             }
           }
           else{
@@ -101,6 +109,8 @@ class TaskButton extends Component {
 
   }
 
+
+  
 
 
 
