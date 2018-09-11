@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {TimeDisplay} from './TimeDisplay'
 class TaskButton extends Component {
   constructor(props){
     super(props);
@@ -9,7 +9,7 @@ class TaskButton extends Component {
       timerStarted: false,
       timerStoped: true,
       timeBreak: 5,
-      minutes: 25,
+      minutes: 2,
       seconds: 0
     };
   }
@@ -26,7 +26,7 @@ class TaskButton extends Component {
           }else{
             this.setState({timerStarted: false})
             clearInterval(this.timer);
-            this.setState({minutes:25, seconds: 0});
+            this.setState({minutes:2, seconds: 0});
             console.log("sond goes here");
           }
         }
@@ -44,13 +44,13 @@ class TaskButton extends Component {
 
   handleTimeRest(e){
     e.preventDefault();
-    this.setState({minutes:25, seconds: 0, timerStarted: false})
+    this.setState({minutes:2, seconds: 0, timerStarted: false})
     clearInterval(this.timer);
 
   }
 
 
-  
+
 
 
 
@@ -58,10 +58,7 @@ class TaskButton extends Component {
   render() {
     return(
       <div>
-        <h2> {(this.state.minutes <= 9  && this.state.seconds <= 9) ? ("0" + this.state.minutes + ":" +  "0" + this.state.seconds) : (
-          (this.state.minutes >= 0 && this.state.minutes <= 9 && this.state.seconds >= 10)? ("0" + this.state.minutes + ":" + this.state.seconds):
-          (this.state.minutes + ":" + "0" + this.state.seconds)
-        ) }</h2>
+        <TimeDisplay  minutes={this.state.minutes} seconds={this.state.seconds}/>
         <button onClick={this.handleTimeStart.bind(this)}>Start</button>
         <button onClick={this.handleTimeRest.bind(this)}>Reset</button>
         <button>Break</button>
