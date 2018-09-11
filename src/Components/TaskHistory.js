@@ -53,17 +53,6 @@ class TaskHistory extends Component {
 
 
   render() {
-<<<<<<< HEAD
-
-    return(
-      <div className="myTaskList"> {this.state.tasks.map((task, index) =>
-
-        <ul key={index}>
-          <li>{task.name}</li>
-        </ul>
-      ).reverse()}
-=======
->>>>>>> bloctime-button
 
     return(
       <div>
