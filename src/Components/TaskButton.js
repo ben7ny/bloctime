@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {TimeDisplay} from './TimeDisplay'
-import dingSfx from './ding-sound-effect.mp3'
+import dingSfx from '../asset/ding-sound-effect.mp3'
 
 
 class TaskButton extends Component {
@@ -18,31 +18,34 @@ class TaskButton extends Component {
     this.audioElement.src = dingSfx;
   }
 
+  timerManager(breakVisibility){
+    this.timer = setInterval(() => {
+      if(this.state.seconds === 0){
+        if(this.state.minutes > 0){
+          this.setState({minutes: this.state.minutes -1, seconds: 59});
+        }else{
+          this.setState({timerStarted: false})
+          clearInterval(this.timer);
+          this.audioElement.play();
+          this.setState({minutes:25, seconds: 0, breakVisibility: breakVisibility});
+        }
+      }
+      else{
+        this.setState({seconds: this.state.seconds - 1});
+      }
+
+
+    }, 1000);
+
+  }
+
+
 
   handleTimeStart(e){
     e.preventDefault();
     if(!this.state.timerStarted){
       this.setState({timerStarted: true})
-      this.timer = setInterval(() => {
-        if(this.state.seconds === 0){
-          if(this.state.minutes > 0){
-            this.setState({minutes: this.state.minutes -1, seconds: 59});
-          }else{
-            this.setState({timerStarted: false})
-            clearInterval(this.timer);
-            this.audioElement.play();
-            this.setState({minutes:25, seconds: 0, breakVisibility: true});
-
-
-          }
-        }
-        else{
-          this.setState({seconds: this.state.seconds - 1});
-        }
-
-
-      }, 1000);
-
+      this.timerManager(true);
     }
 
   }
@@ -63,46 +66,12 @@ class TaskButton extends Component {
     if(taskNum % 4 === 0){
       if(!this.state.timerStarted){
         this.setState({minutes:30, seconds: 0, timerStarted: true})
-        this.timer = setInterval(() => {
-          if(this.state.seconds === 0){
-            if(this.state.minutes > 0){
-              this.setState({minutes: this.state.minutes -1, seconds: 59});
-            }else{
-              this.setState({timerStarted: false})
-              clearInterval(this.timer);
-              this.audioElement.play();
-              this.setState({minutes:25, seconds: 0, breakVisibility: false});
-            }
-          }
-          else{
-            this.setState({seconds: this.state.seconds - 1});
-          }
-
-
-        }, 1000);
-
+        this.timerManager(false);
       }
     }else {
       if(!this.state.timerStarted){
         this.setState({minutes:5, seconds: 0, timerStarted: true})
-        this.timer = setInterval(() => {
-          if(this.state.seconds === 0){
-            if(this.state.minutes > 0){
-              this.setState({minutes: this.state.minutes -1, seconds: 59});
-            }else{
-              this.setState({timerStarted: false})
-              clearInterval(this.timer);
-              this.audioElement.play();
-              this.setState({minutes:25, seconds: 0, breakVisibility: false});
-            }
-          }
-          else{
-            this.setState({seconds: this.state.seconds - 1});
-          }
-
-
-        }, 1000);
-
+        this.timerManager(false);
       }
     }
 
@@ -110,7 +79,7 @@ class TaskButton extends Component {
   }
 
 
-  
+
 
 
 
