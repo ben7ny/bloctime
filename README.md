@@ -1,87 +1,63 @@
-# Project Title
+# Pumadoro
 
-Pumadoro
+Bloctime is a task management app based on The Pomodoro Technique. each user has 25 minutes to complete a task or reset the time over. After each task, the user has an option to take a 5 minutes break.
+The break time would increase to 30 minutes after every four completed tasks.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Fork the project from Github
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+## Challenges
+ Putting complex if statement with logical operators in the Return Method
+ that caused some issue with timer not working correctly.  
 
 ```
-Give the example
+render() {
+  return(
+    <div>
+      <TimeDisplay  minutes={this.state.minutes} seconds={this.state.seconds}/>
+      <button onClick={this.handleTimeStart.bind(this)}>Start</button>
+      <button onClick={this.handleTimeRest.bind(this)}>Reset</button>
+      <button className={this.state.breakVisibility ? 'shown' : 'hidden'} onClick={this.handleBreak.bind(this)}>Break</button>
+    </div>
+  );
+}
+}
 ```
 
-And repeat
-
+## Challenges
+ outsourcing the JS conditional statements to a separate component.  
 ```
-until finished
-```
+export const TimeDisplay = (props) => {
+  if(props.minutes >= 10 && props.seconds >= 10 ){
+    return <h2>{props.minutes}:{props.seconds}</h2>
+  }if (props.minutes >= 10 && props.seconds <= 9 ) {
+    return <h2>{props.minutes}:0{props.seconds}</h2>
+  }if (props.minutes <= 9 && props.seconds >= 10 ) {
+    return <h2>0{props.minutes}:{props.seconds}</h2>
+  }else {
+    return <h2>0{props.minutes}:0{props.seconds}</h2>
+  }
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+};
 ```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+* [netify](https://www.netlify.com) - used for deployment
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [react.js](https://reactjs.org) - Javascript framework used
+* [webpack](https://webpack.js.org) - Dependency Management
+* [firebase](https://firebase.google.com/) - Realtime Database
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Ben Jason**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
