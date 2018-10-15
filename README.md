@@ -1,13 +1,10 @@
 # Pumadoro
 
-Bloctime is a task management app based on The Pomodoro Technique. each user has 25 minutes to complete a task or reset the time over. After each task, the user has an option to take a 5 minutes break.
+Pumadoro is a task management app based on The Pomodoro Technique. each user has 25 minutes to complete a task or reset the time over. After each task, the user has an option to take a 5 minutes break.
 The break time would increase to 30 minutes after every four completed tasks.
 
-## Getting Started
 
-Fork the project from Github
-
-## Challenges
+## Challenge
  Putting complex if statement with logical operators in the Return Method
  that caused some issue with timer not working correctly.  
 
@@ -25,7 +22,7 @@ render() {
 }
 ```
 
-## Challenges
+## solution
  outsourcing the JS conditional statements to a separate component.  
 ```
 export const TimeDisplay = (props) => {
