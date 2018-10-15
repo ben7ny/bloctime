@@ -27,11 +27,6 @@ class TaskHistory extends Component {
 
 
 
-  // componentWillUnmount() {
-  //   this.tasksRef.off('child_added');
-  // }
-
-
   createTask(e){
     e.preventDefault();
     const newTask = this.state.NewTaskDescription;
@@ -57,7 +52,7 @@ class TaskHistory extends Component {
     return(
       <div>
         <header className="App-header">
-          <h1 className="App-title">Bloc Time</h1>
+          <h1 className="App-title">Pumadoro</h1>
           <TaskButton tasks={this.state.tasks} />
         </header>
         <h1 className="App-intro">
