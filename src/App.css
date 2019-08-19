@@ -27,10 +27,10 @@
   display: none;
 }
 
-.headNbody {
+/* .headNbody {
   display: grid;
-  grid-template-rows: 20% 20% 60%;
-}
+  grid-template-rows: 35px 60px auto;
+} */
 
 .App {
   text-align: center;
@@ -62,7 +62,7 @@ button {
 }
 
 form {
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 form input {
@@ -73,6 +73,7 @@ form input {
 
 .myTaskList {
   margin: 0 auto;
+  padding: 0 auto;
   width: 90%;
 }
 
