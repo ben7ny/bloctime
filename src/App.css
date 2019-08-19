@@ -11,6 +11,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #c9caca;
+}
+
 .App-header {
   position: relative;
   background-color: #030504;
@@ -18,10 +22,6 @@
   padding: 24px;
   color: white;
 }
-
-/* .main {
-  display: block;
-} */
 
 .smallLogo {
   display: none;
@@ -49,6 +49,9 @@ form input {
   border: solid 2px #030504;
   width: 60%;
   height: 30px;
+}
+
+form input {
   border-radius: 0;
 }
 
