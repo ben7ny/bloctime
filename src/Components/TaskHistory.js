@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import TaskButton from "./TaskButton.js";
+import FullLogo from ".././images/Pumadoro_LogoFull.svg";
+import SmallLogo from ".././images/Pumadoro_LogoType.svg";
 
 class TaskHistory extends Component {
   constructor(props) {
@@ -41,36 +43,53 @@ class TaskHistory extends Component {
 
   render() {
     return (
-      <div>
+      <div className="headNbody">
         <header className="App-header">
-          <h1 className="App-title">Pumadoro</h1>
+          <img className="smallLogo" alt="logo" src={SmallLogo} />
+          <img className="fullLogo" alt="logo" src={FullLogo} />
           <TaskButton tasks={this.state.tasks} />
         </header>
-        <h1 className="App-intro">Task History</h1>
-        <div className="myTaskList">
-          {" "}
-          {this.state.tasks
-            .map((task, index) => (
-              <ul key={index}>
-                <li>{task.name}</li>
-              </ul>
-            ))
-            .reverse()}
-          <div>
-            <form className="NewTaskCreated" onSubmit={e => this.createTask(e)}>
-              <label>
-                {" "}
-                Enter New Task:
-                <input
-                  type="text"
-                  placeholder="Type Your Task"
-                  value={this.state.NewTaskDescription}
-                  onChange={e => this.getNewTaskUpdate(e)}
-                />
-              </label>
+        <div className="main">
+          <form className="NewTaskCreated" onSubmit={e => this.createTask(e)}>
+            <label>
+              {" "}
+              <p className="taskBoxTitile">Enter New Task:</p>
+              <input
+                type="text"
+                placeholder="Type Your Task"
+                value={this.state.NewTaskDescription}
+                onChange={e => this.getNewTaskUpdate(e)}
+              />
+            </label>
 
-              <input type="submit" value="Create Task" />
-            </form>
+            <input
+              className="addBtnSmall"
+              type="submit"
+              value="Add Task"
+              style={{
+                marginTop: "4px",
+                width: "70px",
+                height: "36px",
+                marginLeft: "4px",
+                backgroundColor: "#0095d5",
+                color: "white",
+                fontSize: "0.8rem"
+              }}
+            />
+          </form>
+        </div>
+        <div className="taskHisotry">
+          <h2 className="App-intro">Task History</h2>
+          <div className="myTaskList">
+            {" "}
+            {this.state.tasks
+              .map((task, index) => (
+                <ul key={index}>
+                  <li>{task.name}</li>
+                </ul>
+              ))
+              .reverse()}
+            <div />
           </div>
         </div>
       </div>

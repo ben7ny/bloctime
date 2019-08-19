@@ -71,7 +71,7 @@ class TaskButton extends Component {
 
   render() {
     return (
-      <div>
+      <div className="time-buns">
         <TimeDisplay
           minutes={this.state.minutes}
           seconds={this.state.seconds}
