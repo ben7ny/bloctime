@@ -49,11 +49,12 @@ form input {
   border: solid 2px #030504;
   width: 60%;
   height: 30px;
+  border-radius: 0;
 }
 
 .myTaskList {
   margin: 0 auto;
-  width: 90%;
+  width: 80%;
 }
 
 .myTaskList ul li {
