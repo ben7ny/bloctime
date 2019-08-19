@@ -60,6 +60,7 @@ class TaskHistory extends Component {
                 placeholder="Type Your Task"
                 value={this.state.NewTaskDescription}
                 onChange={e => this.getNewTaskUpdate(e)}
+                style={{ borderRadius: "0" }}
               />
             </label>
 
