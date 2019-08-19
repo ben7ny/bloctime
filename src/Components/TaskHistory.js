@@ -49,6 +49,7 @@ class TaskHistory extends Component {
           <img className="fullLogo" alt="logo" src={FullLogo} />
           <TaskButton tasks={this.state.tasks} />
         </header>
+        <div className="devider" />
         <div className="main">
           <form className="NewTaskCreated" onSubmit={e => this.createTask(e)}>
             <label>
